@@ -43,6 +43,34 @@
         }
     </script>
 
+    <script>
+const targetDate = new Date("2025-06-06T19:59:59").getTime();
+
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance <= 0) {
+    document.getElementById("countdown").innerHTML = "🎉 Time's up!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerText = days.toString().padStart(2, '0');
+  document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+  document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+  document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+};
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+</script>
+
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery.fancybox.css">
@@ -59,6 +87,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <section class="hero">
+     <div class="overlay"></div>
     <section class="navigation">
         <header>
             <div class="header-content">
@@ -68,9 +97,9 @@
                         <ul class="primary-nav">
                             <li><a href="#intro">Bride & Groom</a></li>
                             <li><a href="#events">Events</a></li>
-                            <!-- <li><a href="#instagram">Instagram</a></li> -->
+                            <li><a href="#clickapic">Click a Picture</a></li>
                             <li><a href="#eng-pics">Engagement</a></li>
-                            <li><a href="#map" class="login">Venue</a></li>
+                            <li><a href="#map">Venue</a></li>
                             <li class="hidden-sm hidden-xs"><a href="#video-bg">Glimpse of the city</a></li>
                         </ul>
                         <!-- <ul class="member-actions">
@@ -96,22 +125,28 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-sm-4 hidden-xs"></div>
-            <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp" class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
-            <div class="col-sm-4 hidden-xs"></div>
-        </div> -->
+
     </div>
     <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
 </section>
 
-<section id="invitation" class="section-padding">
+<section id="invitation" class="events section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>We are getting Married</h3>
                 <p>The dates are from 4<sup>th</sup> to 8<sup>th</sup> of June '25 and we would like you to be a part of
                     it.</p>
+
+                <div class="countdown-container">
+                    <h3>Countdown Timer</h3>
+                    <div id="countdown">
+                    <div><span id="days">00</span><small>Days</small></div>
+                    <div><span id="hours">00</span><small>Hours</small></div>
+                    <div><span id="minutes">00</span><small>Minutes</small></div>
+                    <div><span id="seconds">00</span><small>Seconds</small></div>
+                    </div>
+                </div>
                 <!-- <div class="share-bar"></div> -->
             </div>
         </div>
@@ -130,9 +165,9 @@
             <div class="col-md-6">
                 <p>
 
-                    Groom: Sri Charan, only son of Mr. Saithana Anand Babu and Mrs. Saithana Malika from Kakinada Rural, Kakinada district.
+                    <b>Groom: Sri Charan</b><br> only son of Mr. Saithana Anand Babu and Mrs. Saithana Malika from Kakinada Rural, Kakinada district.<br>
 
-                    Bride: Shirisha, granddaughter of Mr. Adapa Venkata Rao and Mrs. Suryakantam from Timmapuram, Kakinada district.
+                    <b>Bride: Shirisha</b><br> granddaughter of Mr. Adapa Venkata Rao and Mrs. Suryakantam from Timmapuram, Kakinada district.<br>
                     
                     Their marriage has been arranged with the blessings of their elders.
                                      
@@ -191,17 +226,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row section-padding">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
-                    <i class="fa fa-barcode"></i>Dress code
-                </a>
-            </div>
-        </div> -->
-        <!--<div class="row">
-            <div class="col-xs-12 section-border section-padding">
-            </div>
-        </div>-->
     </div>
 
     <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -249,13 +273,13 @@
 
 </section>
 
-<section id="instagram" class="section-padding">
+<section id="clickapic" class="section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>A picture is worth a thousand words!</h3>
                 <p>Help us capture the moment, tag your photos with the hashtag
-                    <a href="https://instagram.com/explore/tags/charanandsirisha/" target="_blank">#CharanAndSirisha</a>
+                    <a href="https://instagram.com/explore/tags/charanandsirisha/" target="_blank">#CharanAndSirisha</a> over Instagram
                 </p>
             </div>
         </div>
@@ -342,24 +366,17 @@
             <div class="col-xs-12 section-border section-padding"></div>
         </div>
     </div>
-    <!--<div class="row">
-        <div class="col-md-12">
-            <div class="diamond floating-logo">
-                <img src="img/sketch-logo.png" alt="Sketch Logo">
-                <div class="ring"></div>
-            </div>
-        </div>
-    </div>-->
+    
 </section>
 
-<!-- <section id="video-bg" class="hidden-sm hidden-xs">
-    <div id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/9giqL1H6yRs',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:80, stopAt:259, opacity:1}">
+<section id="video-bg" class="hidden-sm hidden-xs">
+    <div id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/lic3z6lqvEY',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:21, stopAt:174, opacity:1}">
     </div>
     <div id="video-content">
-        <h5>Kolkata</h5>
-        <p>City of joy</p>
+        <h5>Kakinada</h5>
+        <p>Smart City</p>
     </div>
-</section> -->
+</section>
 
 <section id="map" class="section-padding">
     <div class="text-center">
@@ -372,26 +389,22 @@
             <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
                 <div class="text-center">
                     <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
-                        <i class="fa fa-info-circle"></i>�� Show info
+                        <i class="fa fa-info-circle"></i>Show info
                     </div>
                 </div>
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h5>APSP Kalyana Mandapam</h5>
+                        <div class="col-md-12">
+                            <h5><center>APSP Kalyana Mandapam</center></h5>
                             <p>3 APSP, Rayudupalem, Kakinada, Andhra Pradesh 533005</p>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <h5>Mr. Amit Roy</h5>
-                            <p><i class="fa fa-mobile"></i> <a href="tel://+919412345678">+91 9412345678</a></p>
-                        </div> -->
                     </div>
                     <div class="row text-center">
                         <div class="col-md-6" style="padding: 5px;">
-                            <a class="btn btn-fill btn-small" href="https://maps.app.goo.gl/utEMcY9L4pkCpxbP6"><i class="fa fa-taxi"></i>Directions</a>
+                            <a class="btn btn-fill btn-small" href="https://maps.app.goo.gl/utEMcY9L4pkCpxbP6"><i class="fa fa-taxi"></i> Directions</a>
                         </div>
                         <div class="col-md-6" style="padding: 5px;">
-                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>Show
+                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i> Show
                                 map</a>
                         </div>
                     </div>
@@ -423,7 +436,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3>What are you waiting for?</h3>
-                <p>We would greatly appreciate if you could RSVP before 1st of November '17</p>
+                <p>We would greatly appreciate if you could RSVP before 1st of June '25</p>
                 <form id="rsvp-form" class="rsvp-form" action="" method="POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
@@ -445,7 +458,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-key"></i><input type="number" name="invite_code" id="invite_code" class="" min="0" placeholder="Invite code" required="">
+                                <i class="fa fa-phone"></i><input type="mobile" name="mobile" id="mobile" class="" min="10" placeholder="Mobile Number" required="">
                             </div>
                         </div>
                     </div>
@@ -467,7 +480,7 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted by Ram with lots of <span class="fa fa-heart pulse2"></span> for Antara</p>
+                <p>Thank You<span class="fa fa-heart pulse2"></span></p>
             </div>
         </div>
     </div>
@@ -480,7 +493,7 @@
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
 <script src="js/scripts.min.js"></script>
-<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlPw3GQYI3faa_9mRE6plWuM7xNEmrwH0&callback=initMap"></script>
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTJQhs5nIA20ycOInt5lyAbvvoqm-HFK8&callback=initMap"></script>
 <!-- Google Analytics -->
 <script>
     (function (i, s, o, g, r, a, m) {
