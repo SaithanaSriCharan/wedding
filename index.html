@@ -195,9 +195,9 @@ updateCountdown();
                     <p><strong>4th June</strong></p>
 
                     <h5>Pellikoduku <span class="time">9 AM Onwards</span></h5>
-                    <p>Pellikoduku Ceremony is a traditional pre-wedding ritual in Telugu-speaking communities (primarily in Andhra Pradesh and Telangana)
-                         held to honor and prepare the groom for his upcoming wedding.
-                          It's culturally rich, emotionally significant, and usually filled with festive spirit, family blessings, and vibrant customs.</p>
+                    <p>The Pellikoduku ceremony is a traditional pre-wedding ritual in Telugu weddings,
+                         centered around the groom. It’s a beautiful and symbolic ceremony filled
+                          with cultural significance and family bonding</p>
                 </div>
                 <div class="wp5">
                     <p><strong>5th June</strong></p>
@@ -273,7 +273,18 @@ updateCountdown();
 
 </section>
 
-<section id="clickapic" class="section-padding">
+
+<section id="video-bg" class="hidden-sm hidden-xs">
+    <div id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/eAnWjf16S2k',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:00, stopAt:29, opacity:1}">
+    </div>
+    <div id="video-content">
+        <h5>Engagement Trailer</h5>
+        <p>Sri Charan & Sirisha</p>
+    </div>
+</section>
+
+
+<!-- <section id="clickapic" class="section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -283,13 +294,13 @@ updateCountdown();
                 </p>
             </div>
         </div>
-        <!-- <div class="row section-border wp7">
+        <div class="row section-border wp7">
             <div class="col-md-4 col-md-offset-4">
                 <img src="img/iphone_instagram.jpg">
             </div>
-        </div> -->
+        </div>
     </div>
-</section>
+</section> -->
 
 <section id="eng-pics" class="section-padding">
     <div class="container-fluid">
@@ -369,14 +380,14 @@ updateCountdown();
     
 </section>
 
-<section id="video-bg" class="hidden-sm hidden-xs">
+<!-- <section id="video-bg" class="hidden-sm hidden-xs">
     <div id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/lic3z6lqvEY',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:21, stopAt:174, opacity:1}">
     </div>
     <div id="video-content">
         <h5>Kakinada</h5>
         <p>Smart City</p>
     </div>
-</section>
+</section> -->
 
 <section id="map" class="section-padding">
     <div class="text-center">
@@ -437,7 +448,7 @@ updateCountdown();
             <div class="col-md-6 col-md-offset-3">
                 <h3>What are you waiting for?</h3>
                 <p>We would greatly appreciate if you could RSVP before 1st of June '25</p>
-                <form id="rsvp-form" class="rsvp-form" action="" method="POST">
+                <form id="rsvp-form" class="rsvp-form" onsubmit="submitForm()" method="POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
@@ -465,10 +476,9 @@ updateCountdown();
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn">
-                        Yes,
-                        that's me!
-                    </button>
+                    <button class="btn-fill rsvp-btn" value="Yes,
+                        that's me!">Yes,
+                        that's me!</button>
                 </form>
             </div>
         </div>
@@ -510,6 +520,32 @@ updateCountdown();
     ga('create', 'UA-46465113-4', 'auto');
     ga('send', 'pageview');
 </script>
+
+<script>
+    function submitForm() {
+      var name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const count = document.getElementById('extras').value;
+      const mobile = document.getElementById('mobile').value;
+
+      //var data = {'entry.1485106211': email,'entry.1110231895': name, 'entry.1304961504':count, 'entry.417924458': mobile};
+
+
+      const formData = new FormData();
+formData.append("entry.1485106211", email);
+formData.append("entry.1110231895", name);
+formData.append("entry.1304961504", count);
+formData.append("entry.417924458", mobile);
+
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSeHxJwI63C8ya-Ay9unIvkWFvQhm7ZXsFxuALsiTQo3vPR_nQ/formResponse", {
+  method: "POST",
+  mode: "no-cors", // required to avoid CORS errors
+  body: formData
+});
+
+      
+    }
+  </script>
 
 
 </body></html>
