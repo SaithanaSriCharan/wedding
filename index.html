@@ -505,7 +505,7 @@ updateCountdown();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>X</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span></span>
                     </button>
                     <div class="section-padding">
                         <h3>Thank you!</h3>
@@ -519,7 +519,7 @@ updateCountdown();
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div id="form-data" class="col-md-6 col-md-offset-3">
 
                 <h3>What are you waiting for?</h3>
                 <p>We would greatly appreciate if you could RSVP before 1st of June '25</p>
@@ -602,7 +602,7 @@ updateCountdown();
 document.getElementById("myButton").addEventListener("click", function() {
 
     document.getElementById("rsvp-modal").style.display = "contents";
-    document.getElementById("rsvp-form").style.display = "none";
+    document.getElementById("form-data").style.display = "none";
 
     });
 
