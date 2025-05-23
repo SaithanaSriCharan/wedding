@@ -62,3 +62,12 @@
         color: #994563;
 }
 
+.rsvp-btn:hover {
+        color: #ffe0f0;
+        border-color : #ffe0f0
+}
+
+.rsvp-btn:focus {
+        color: #ffe0f0;
+        border-color : #ffe0f0
+}
